@@ -1,0 +1,35 @@
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+springdoc:
+  swagger-ui:
+    path: /
+  show-actuator: true
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: customer-enrollment-service
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/${spring.application.name}}
+  cloud:
+    stream:
+      kafka:
+        binder:
+          auto-create-topics: false
+          brokers: ${KAFKA_BROKERS:localhost:9092}
+      bindings:
+        CustomerEnrollmentRegisteredEvent-out-0:
+          content-type: application/json
+          destination: ${spring.application.name}.customer-enrollment-registered-event.json
+        CustomerEnrollmentApprovedEvent-out-0:
+          content-type: application/json
+          destination: ${spring.application.name}.customer-enrollment-approved-event.json
+        CustomerEnrollmentDeniedEvent-out-0:
+          content-type: application/json
+          destination: ${spring.application.name}.customer-enrollment-denied-event.json
+        CustomerEnrollmentRegisteredEvent-in-0:
+          group: ${spring.application.name}
+          content-type: application/json
+          destination: ${spring.application.name}.customer-enrollment-registered-event.json
