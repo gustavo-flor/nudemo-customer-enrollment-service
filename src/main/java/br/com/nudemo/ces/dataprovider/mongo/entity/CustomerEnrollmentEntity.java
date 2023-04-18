@@ -5,6 +5,7 @@ import br.com.nudemo.ces.core.domain.PersonalData;
 import br.com.nudemo.ces.core.domain.Status;
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -24,6 +25,7 @@ public class CustomerEnrollmentEntity {
                 .personalData(customerEnrollment.getPersonalData())
                 .createdAt(customerEnrollment.getCreatedAt())
                 .updatedAt(customerEnrollment.getUpdatedAt())
+                .expiresOn(customerEnrollment.getExpiresOn())
                 .build();
     }
 
@@ -33,6 +35,8 @@ public class CustomerEnrollmentEntity {
     private PersonalData personalData;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    @Indexed(name = "expiresOnStatusDiscarded", partialFilter = "{ 'status': 'DISCARDED' }", expireAfterSeconds = 1)
+    private LocalDateTime expiresOn;
 
     public CustomerEnrollment toDomain() {
         return CustomerEnrollment.builder()
@@ -41,6 +45,7 @@ public class CustomerEnrollmentEntity {
                 .personalData(getPersonalData())
                 .createdAt(getCreatedAt())
                 .updatedAt(getUpdatedAt())
+                .expiresOn(getExpiresOn())
                 .build();
     }
 

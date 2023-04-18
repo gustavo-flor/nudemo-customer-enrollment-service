@@ -5,8 +5,7 @@ import br.com.nudemo.ces.core.domain.Status;
 
 import java.util.Optional;
 
-import static br.com.nudemo.ces.core.domain.Status.APPROVED;
-import static br.com.nudemo.ces.core.domain.Status.DENIED;
+import static br.com.nudemo.ces.core.domain.Status.*;
 import static java.time.LocalDateTime.now;
 
 public interface CustomerEnrollmentService {
@@ -31,6 +30,13 @@ public interface CustomerEnrollmentService {
     default CustomerEnrollment deny(final CustomerEnrollment customerEnrollment, final String message) {
         customerEnrollment.setStatus(DENIED);
         customerEnrollment.setMessage(message);
+        return update(customerEnrollment);
+    }
+
+    default CustomerEnrollment discard(final CustomerEnrollment customerEnrollment, final String message) {
+        customerEnrollment.setStatus(DISCARDED);
+        customerEnrollment.setMessage(message);
+        customerEnrollment.setExpiresOn(now().plusMinutes(5));
         return update(customerEnrollment);
     }
 

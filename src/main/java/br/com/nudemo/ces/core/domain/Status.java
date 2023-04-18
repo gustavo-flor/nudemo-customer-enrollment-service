@@ -4,7 +4,8 @@ public enum Status {
 
     REGISTERED,
     APPROVED,
-    DENIED
+    DENIED,
+    DISCARDED
 
 
 }

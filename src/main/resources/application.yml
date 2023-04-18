@@ -13,6 +13,7 @@ spring:
   data:
     mongodb:
       uri: ${MONGODB_URI:mongodb://localhost:27017/${spring.application.name}}
+      auto-index-creation: true
   cloud:
     stream:
       kafka:
@@ -29,6 +30,9 @@ spring:
         CustomerEnrollmentDeniedEvent-out-0:
           content-type: application/json
           destination: ${spring.application.name}.customer-enrollment-denied-event.json
+        CustomerEnrollmentDiscardedEvent-out-0:
+          content-type: application/json
+          destination: ${spring.application.name}.customer-enrollment-discarded-event.json
         CustomerEnrollmentRegisteredEvent-in-0:
           group: ${spring.application.name}
           content-type: application/json

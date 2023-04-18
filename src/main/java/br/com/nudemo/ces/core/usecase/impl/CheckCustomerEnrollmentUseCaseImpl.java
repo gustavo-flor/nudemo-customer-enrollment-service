@@ -1,7 +1,7 @@
 package br.com.nudemo.ces.core.usecase.impl;
 
 import br.com.nudemo.ces.core.event.CustomerEnrollmentApprovedEvent;
-import br.com.nudemo.ces.core.event.CustomerEnrollmentDeniedEvent;
+import br.com.nudemo.ces.core.event.CustomerEnrollmentDiscardedEvent;
 import br.com.nudemo.ces.core.mapping.UseCase;
 import br.com.nudemo.ces.core.service.CustomerEnrollmentService;
 import br.com.nudemo.ces.core.service.MessageService;
@@ -15,7 +15,7 @@ import static br.com.nudemo.ces.core.domain.Status.APPROVED;
 public class CheckCustomerEnrollmentUseCaseImpl implements CheckCustomerEnrollmentUseCase {
 
     private static final String APPROVE_MESSAGE = "Successful check";
-    private static final String DENY_MESSAGE = "Already exists a enrollment approved for that client";
+    private static final String ALREADY_APPROVED_MESSAGE = "Already exists a enrollment approved for that client";
 
     private final CustomerEnrollmentService customerEnrollmentService;
     private final MessageService messageService;
@@ -28,8 +28,8 @@ public class CheckCustomerEnrollmentUseCaseImpl implements CheckCustomerEnrollme
         }
         final var cpf = customerEnrollment.getPersonalData().cpf();
         if (customerEnrollmentService.existsByCpfAndStatus(cpf, APPROVED)) {
-            customerEnrollmentService.deny(customerEnrollment, DENY_MESSAGE);
-            messageService.send(CustomerEnrollmentDeniedEvent.of(customerEnrollment));
+            customerEnrollmentService.discard(customerEnrollment, ALREADY_APPROVED_MESSAGE);
+            messageService.send(CustomerEnrollmentDiscardedEvent.of(customerEnrollment));
             return new Output(customerEnrollment);
         }
         customerEnrollmentService.approve(customerEnrollment, APPROVE_MESSAGE);

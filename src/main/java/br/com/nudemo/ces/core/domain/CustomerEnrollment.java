@@ -31,9 +31,14 @@ public class CustomerEnrollment {
     private PersonalData personalData;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private LocalDateTime expiresOn;
+
+    public boolean isRegistered() {
+        return REGISTERED == getStatus();
+    }
 
     public boolean isNotRegistered() {
-        return REGISTERED != getStatus();
+        return !isRegistered();
     }
 
     public boolean isApproved() {
@@ -42,6 +47,10 @@ public class CustomerEnrollment {
 
     public boolean isDenied() {
         return DENIED == getStatus();
+    }
+
+    public boolean isDiscarded() {
+        return DISCARDED == getStatus();
     }
 
 }
