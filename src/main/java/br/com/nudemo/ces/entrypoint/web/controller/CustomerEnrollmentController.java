@@ -1,7 +1,7 @@
 package br.com.nudemo.ces.entrypoint.web.controller;
 
-import br.com.nudemo.ces.core.domain.CustomerEnrollment;
-import br.com.nudemo.ces.core.domain.PersonalData;
+import br.com.nudemo.ces.core.domain.customer.enrollment.CustomerEnrollment;
+import br.com.nudemo.ces.core.domain.person.PersonalData;
 import br.com.nudemo.ces.core.usecase.CreateCustomerEnrollmentUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

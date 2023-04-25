@@ -1,7 +1,7 @@
 package br.com.nudemo.ces.core.usecase;
 
-import br.com.nudemo.ces.core.domain.CustomerEnrollment;
-import br.com.nudemo.ces.core.domain.PersonalData;
+import br.com.nudemo.ces.core.domain.customer.enrollment.CustomerEnrollment;
+import br.com.nudemo.ces.core.domain.person.PersonalData;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.validation.annotation.Validated;

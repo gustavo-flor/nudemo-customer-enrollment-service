@@ -1,8 +1,8 @@
 package br.com.nudemo.ces.dataprovider.mongo.entity;
 
-import br.com.nudemo.ces.core.domain.CustomerEnrollment;
-import br.com.nudemo.ces.core.domain.PersonalData;
-import br.com.nudemo.ces.core.domain.Status;
+import br.com.nudemo.ces.core.domain.customer.enrollment.CustomerEnrollment;
+import br.com.nudemo.ces.core.domain.person.PersonalData;
+import br.com.nudemo.ces.core.domain.customer.enrollment.Status;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

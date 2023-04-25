@@ -1,6 +1,6 @@
 package br.com.nudemo.ces.core.event;
 
-import br.com.nudemo.ces.core.domain.CustomerEnrollment;
+import br.com.nudemo.ces.core.domain.customer.enrollment.CustomerEnrollment;
 import br.com.nudemo.ces.core.message.Message;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

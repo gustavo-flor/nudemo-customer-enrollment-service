@@ -1,7 +1,7 @@
 package br.com.nudemo.ces.core.usecase.impl;
 
-import br.com.nudemo.ces.core.domain.CustomerEnrollment;
-import br.com.nudemo.ces.core.domain.PersonalData;
+import br.com.nudemo.ces.core.domain.customer.enrollment.CustomerEnrollment;
+import br.com.nudemo.ces.core.domain.person.PersonalData;
 import br.com.nudemo.ces.core.event.CustomerEnrollmentRegisteredEvent;
 import br.com.nudemo.ces.core.mapping.UseCase;
 import br.com.nudemo.ces.core.service.CustomerEnrollmentService;

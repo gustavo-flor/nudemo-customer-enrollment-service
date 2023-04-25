@@ -1,11 +1,11 @@
 package br.com.nudemo.ces.core.service;
 
-import br.com.nudemo.ces.core.domain.CustomerEnrollment;
-import br.com.nudemo.ces.core.domain.Status;
+import br.com.nudemo.ces.core.domain.customer.enrollment.CustomerEnrollment;
+import br.com.nudemo.ces.core.domain.customer.enrollment.Status;
 
 import java.util.Optional;
 
-import static br.com.nudemo.ces.core.domain.Status.*;
+import static br.com.nudemo.ces.core.domain.customer.enrollment.Status.*;
 import static java.time.LocalDateTime.now;
 
 public interface CustomerEnrollmentService {
@@ -19,6 +19,12 @@ public interface CustomerEnrollmentService {
     default CustomerEnrollment update(final CustomerEnrollment customerEnrollment) {
         customerEnrollment.setUpdatedAt(now());
         return save(customerEnrollment);
+    }
+
+    default CustomerEnrollment fail(final CustomerEnrollment customerEnrollment, final String message) {
+        customerEnrollment.setStatus(FAILED);
+        customerEnrollment.setMessage(message);
+        return update(customerEnrollment);
     }
 
     default CustomerEnrollment approve(final CustomerEnrollment customerEnrollment, final String message) {

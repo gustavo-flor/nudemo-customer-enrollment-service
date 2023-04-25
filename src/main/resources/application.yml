@@ -37,3 +37,11 @@ spring:
           group: ${spring.application.name}
           content-type: application/json
           destination: ${spring.application.name}.customer-enrollment-registered-event.json
+    openfeign:
+      client:
+        config:
+          default:
+            default-request-headers:
+              X-Application-Name: ${spring.application.name}
+          CustomerServiceClient:
+            url: http://localhost:3000/customer-service

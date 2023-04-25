@@ -1,10 +1,11 @@
-package br.com.nudemo.ces.core.domain;
+package br.com.nudemo.ces.core.domain.customer.enrollment;
 
+import br.com.nudemo.ces.core.domain.person.PersonalData;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
-import static br.com.nudemo.ces.core.domain.Status.*;
+import static br.com.nudemo.ces.core.domain.customer.enrollment.Status.*;
 import static java.time.LocalDateTime.now;
 
 @Getter

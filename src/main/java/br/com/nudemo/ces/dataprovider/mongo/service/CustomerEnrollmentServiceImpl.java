@@ -1,7 +1,7 @@
 package br.com.nudemo.ces.dataprovider.mongo.service;
 
-import br.com.nudemo.ces.core.domain.CustomerEnrollment;
-import br.com.nudemo.ces.core.domain.Status;
+import br.com.nudemo.ces.core.domain.customer.enrollment.CustomerEnrollment;
+import br.com.nudemo.ces.core.domain.customer.enrollment.Status;
 import br.com.nudemo.ces.core.service.CustomerEnrollmentService;
 import br.com.nudemo.ces.dataprovider.mongo.entity.CustomerEnrollmentEntity;
 import br.com.nudemo.ces.dataprovider.mongo.repository.CustomerEnrollmentEntityRepository;
